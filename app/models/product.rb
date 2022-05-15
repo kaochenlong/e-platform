@@ -3,4 +3,5 @@ class Product < ApplicationRecord
   validates :price, presence: true
 
   belongs_to :user
+  has_one_attached :cover
 end
