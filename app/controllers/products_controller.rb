@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to root_path
+      redirect_to root_path, notice: "商品新增成功"
     else
       render :new
     end
@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to root_path
+      redirect_to root_path, notice: "商品更新成功"
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: "商品已刪除"
   end
 
   private
