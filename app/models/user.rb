@@ -5,4 +5,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :password, presence: true, confirmation: true
 
+  has_many :products
+  # .proudcts
+  # .products=
 end
