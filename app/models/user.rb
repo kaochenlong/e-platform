@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :password, presence: true, confirmation: true
 
   has_many :products
-  # .proudcts
-  # .products=
+
+  has_many :user_favorites
+  has_many :favorite_products, through: :user_favorites, source: :product
 end
