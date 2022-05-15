@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :products
+  resources :products do
+    member do
+      post :like
+      delete :unlike
+    end
+  end
 
   resource :users, only: [:create] do
     get "sign_up"
