@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show, :like, :unlike]
+  before_action :find_product, only: [:show, :like, :unlike, :buy]
   before_action :find_user_product, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -64,6 +64,17 @@ class ProductsController < ApplicationController
     else
       render json: {status: "not modify", id: @product.id}
     end
+  end
+
+  def buy
+    gateway = Braintree::Gateway.new(
+      :environment => :sandbox,
+      :merchant_id => 'your-merchant-id',
+      :public_key => 'your-public-key',
+      :private_key => 'your-private-key',
+    )
+
+    @token = gateway.client_token.generate
   end
 
   private

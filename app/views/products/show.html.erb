@@ -1,4 +1,5 @@
 <h1>商品 <%= @product.title %></h1>
+<%= link_to "買", buy_product_path(@product) %>
 
 <div data-controller="favorite"
      data-id="<%= @product.id %>"

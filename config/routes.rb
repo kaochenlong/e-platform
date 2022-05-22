@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       post :like
       delete :unlike
+      get :buy
     end
   end
 
