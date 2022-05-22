@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show]
+  before_action :find_product, only: [:show, :like, :unlike]
   before_action :find_user_product, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -44,6 +44,26 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     redirect_to root_path, notice: "商品已刪除"
+  end
+
+  def like
+    if not @product.users.exists?(current_user.id)
+      # 收藏
+      @product.users << current_user
+      render json: {status: "added", id: @product.id}
+    else
+      render json: {status: "not modify", id: @product.id}
+    end
+  end
+
+  def unlike
+    if @product.users.exists?(current_user.id)
+      # 收藏
+      @product.users.delete(current_user)
+      render json: {status: "removed", id: @product.id}
+    else
+      render json: {status: "not modify", id: @product.id}
+    end
   end
 
   private

@@ -2,3 +2,7 @@
  *= require "form"
  *= require_self
  */
+
+.hidden {
+  display: none;
+}

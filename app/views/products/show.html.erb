@@ -1,9 +1,14 @@
 <h1>商品 <%= @product.title %></h1>
 
 <div data-controller="favorite"
-     data-id="<%= @product.id %>">
-  <button data-action="click->favorite#like">
+     data-id="<%= @product.id %>"
+     data-favorited="<%= current_user&.like?(@product) %>">
+  <button data-action="click->favorite#like" data-favorite-target="likeBtn">
   收藏
+  </button>
+
+  <button data-action="click->favorite#unlike" data-favorite-target="unlikeBtn">
+  取消收藏
   </button>
 </div>
 
