@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = @product.comments.new(comment_params)
 
     if @comment.save
-      redirect_to product_path(@product), notice: "留言成功"
+      # redirect_to product_path(@product), notice: "留言成功"
     else
       render "products/show"
     end
