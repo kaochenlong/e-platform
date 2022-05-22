@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :products do
+    resources :comments, shallow: true, only: [:create, :destroy]
+
     member do
       post :like
       delete :unlike
