@@ -4,7 +4,11 @@
 
 <%= form_with(model: @order,
               url: pay_order_path(@order),
-              method: "patch") do |form| %>
-  <div data-controller="payment" data-token="<%= @token %>"></div>
+              method: "patch",
+              data: {
+                controller: "payment-form",
+                token: @token
+              }) do |form| %>
+  <%= form.submit '刷卡' %>
 <% end %>
 

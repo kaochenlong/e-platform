@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  include Payable
+
   before_action :find_product, only: [:show, :like, :unlike, :buy]
   before_action :find_user_product, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
@@ -92,12 +94,4 @@ class ProductsController < ApplicationController
     @product = current_user.products.find(params["id"])
   end
 
-  def gateway
-    Braintree::Gateway.new(
-      environment: :sandbox,
-      merchant_id: ENV['MERCHANT_ID'],
-      public_key: ENV['PUBLIC_KEY'],
-      private_key: ENV['PRIVATE_KEY']
-    )
-  end
 end
