@@ -21,6 +21,7 @@ gem "braintree", "~> 4.7.0"
 gem "friendly_id", "~> 5.4"
 gem "aasm", "~> 5.2"
 gem "net-smtp", "~> 0.3.1"
+gem "net-pop", "~> 0.1.1"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
