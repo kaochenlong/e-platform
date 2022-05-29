@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  serial: MyString
+  product: 
+  amount: 1
+  user: one
+  state: MyString
+
+two:
+  serial: MyString
+  product: 
+  amount: 1
+  user: two
+  state: MyString

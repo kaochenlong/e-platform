@@ -9,6 +9,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :orders, only: [] do
+    member do
+      patch :pay
+      # PATCH /orders/:id/pay
+    end
+  end
+
   resource :users, only: [:create] do
     get "sign_up"
     get "login"

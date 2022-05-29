@@ -1,3 +1,10 @@
 <h1>我要買 <%= @product.title %>！</h1>
 
-<div data-controller="payment" data-token="<%= @token %>"></div>
+訂單序號：<%= @order.slug %>
+
+<%= form_with(model: @order,
+              url: pay_order_path(@order),
+              method: "patch") do |form| %>
+  <div data-controller="payment" data-token="<%= @token %>"></div>
+<% end %>
+

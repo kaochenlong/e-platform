@@ -67,11 +67,10 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    gateway = Braintree::Gateway.new(
-      environment: :sandbox,
-      merchant_id: ENV['MERCHANT_ID'],
-      public_key: ENV['PUBLIC_KEY'],
-      private_key: ENV['PRIVATE_KEY']
+    # 建立訂單
+    @order = current_user.orders.create(
+      product: @product,
+      amount: @product.price
     )
 
     @token = gateway.client_token.generate
@@ -91,5 +90,14 @@ class ProductsController < ApplicationController
 
   def find_user_product
     @product = current_user.products.find(params["id"])
+  end
+
+  def gateway
+    Braintree::Gateway.new(
+      environment: :sandbox,
+      merchant_id: ENV['MERCHANT_ID'],
+      public_key: ENV['PUBLIC_KEY'],
+      private_key: ENV['PRIVATE_KEY']
+    )
   end
 end
