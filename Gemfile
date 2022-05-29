@@ -21,6 +21,7 @@ gem "braintree", "~> 4.7.0"
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'foreman', '~> 0.87.2'
+  gem "dotenv-rails", "~> 2.7"
 end
 
 group :development do

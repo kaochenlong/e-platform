@@ -68,10 +68,10 @@ class ProductsController < ApplicationController
 
   def buy
     gateway = Braintree::Gateway.new(
-      :environment => :sandbox,
-      :merchant_id => 'your-merchant-id',
-      :public_key => 'your-public-key',
-      :private_key => 'your-private-key',
+      environment: :sandbox,
+      merchant_id: ENV['MERCHANT_ID'],
+      public_key: ENV['PUBLIC_KEY'],
+      private_key: ENV['PRIVATE_KEY']
     )
 
     @token = gateway.client_token.generate
