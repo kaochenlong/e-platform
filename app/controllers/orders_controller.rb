@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     )
 
     if result.success?
+      order.pay! if order.may_pay?
       redirect_to root_path, notice: "成功"
     else
       redirect_to root_path, notice: "付款發生錯誤"
